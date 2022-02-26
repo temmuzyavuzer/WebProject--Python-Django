@@ -1,0 +1,71 @@
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Heaven{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'styles.css' %}" rel="stylesheet">
+
+        <script>var authenticated = '{{ user.is_authenticated }}'; var curr_user = '{{ user.username }}';</script>
+        <script src="{% static 'network.js' %}"></script>
+    </head>
+    <body>
+        <div class='row'>
+            <div class="sidebar col-lg-3 col-md-4 position">
+                <div id='s-sidebar'>
+                    <div>
+                        <a href="{% url 'index' %}">
+                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF_8JAV9Myt4uxTF8U0bfptDNGKwzH34toTg&usqp=CAU' id='main-icon'>
+                        </a>
+                    </div>
+                    <form action="{% url 'search' %}" method='post'>
+                        {% csrf_token %}
+                        <input type="text" placeholder='You can search User' name='search' id='search_user'>
+                    </form>
+                    <div class='content_sidebar'>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'user_profile' user.username %}" id='prof_posts'><strong>@{{ user.username }}</strong></a>
+                        {% endif %}
+                    </div>
+                    <div class='content_sidebar'>
+                        <a href="{% url 'index' %}" id='show_all_posts'>Home</a>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <div class='content_sidebar'>
+                        <a href="{% url 'following' %}" id='following_posts'>Following</a>
+                    </div>
+                    <div class='content_sidebar'>
+                        <a href="{% url 'logout' %}">Log Out</a>
+                    </div>
+                    <div class='content_sidebar'>
+                        <button id='new_heaven'>New Heaven</button>
+                    </div>
+                    {% else %}
+                    <div class='content_sidebar'>
+                        <a href="{% url 'login' %}">Log In</a>
+                    </div>
+                    <div class='content_sidebar'>
+                        <a href="{% url 'register' %}">Register</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="main col-lg-6 col-md-4">
+                {% block body %}
+                {% endblock %}
+                <div id='overlay'>
+                    <form id='overlay_form' method='POST'>
+                        {% csrf_token %}
+                        <div id='overlay_border'>
+                            <button type="button" id='close_button'>x</button>
+                            <br><br>
+                            <h1 id='overlay_heading'></h1>
+                            <textarea id='overlay_text' placeholder="Share your thoughts with us" rows='10'></textarea>
+                            <input type='submit' value='Post' class='custom_btn' id='overlay_button'>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>

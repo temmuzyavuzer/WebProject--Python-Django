@@ -1,0 +1,41 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+    <form id='new_post' method='POST'>
+        {% csrf_token %}
+        <h3>New Thoughts</h3>
+        <textarea name='new' placeholder="Share your thoughts with us" rows='5' id='textarea_new'></textarea>
+        <br><br>
+        <input type='submit' value='Share' class='custom_btn' id='submit_new'>
+        <br><br>
+    </form>
+    {% endif %}
+    <br>
+
+    <h1>{{ view_for }}</h1>
+    <div id='post_view'>
+        {% for post in posts %}
+        <div class='post' data-post_id='{{ post.id }}'>
+            <a href="{% url 'user_profile' post.author.username %}">
+                <b class='post_name'>{{ post.author.first_name }} {{ post.author.last_name }}</b>
+            </a> @{{ post.author.username }} • {{ post.time }} 
+            {% if post.author.username == user.username %}
+                <button class='edit_btn' data-post_id='{{ post.id }}'>Edit</button>
+            {% endif %}
+            <p  id='post_content{{ post.id }}'>{{ post.content }}</p> 
+            <div>
+                {% if user in post.liked_by.all %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDwmSD4oTzoewSqXuvXy_i6uw5vyjZecmyVw&usqp=CAU" class='like_icon' data-post_id="{{ post.id }}" data-liked='true'>
+                {% else %}
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDwmSD4oTzoewSqXuvXy_i6uw5vyjZecmyVw&usqp=CAU" class='like_icon' data-post_id="{{ post.id }}" data-liked='false'>
+                {% endif %}
+                <span id='like_count{{ post.id }}'>{{ post.likes }}</span>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpSHxk0lb0XvqoP2i74zDuSkT4FQp1WZHXvECDg1jUbc_QLiixfAiclNBAoQYhh70efIo&usqp=CAU" class='comment_icon' data-post_id="{{ post.id }}">
+                <span id='comment_count{{ post.id }}'>{{ post.replies.count }}</span>
+            </div> 
+        </div>
+        {% empty %} Sorry!! You are not following anybody right now!. Start with following your friends. {% endfor %}
+    </div>
+
+{% endblock %}

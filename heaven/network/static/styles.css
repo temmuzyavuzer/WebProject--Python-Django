@@ -1,0 +1,248 @@
+body{
+    max-width: 99%;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+}
+.main {
+    padding: 10px;
+    border-left:1px solid gray;
+    border-right:1px solid gray;
+}
+h1,h3,h4 {
+    color: rgb(28, 33, 38) !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+.sidebar {
+    height: 100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+.content_sidebar a {
+    text-decoration:none;
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 12px;
+}
+.sidebar div{
+    margin-top: 25px;
+}
+.sidebar #s-sidebar {
+    position:fixed;
+    width: 20%;
+}
+.sidebar #search_user {
+    padding: 8px;
+    border-radius: 25px;
+    margin: 12px;
+    text-indent: 10px;
+}
+
+
+
+
+#new_heaven{
+    color:white;
+    background-color:rgba(28, 33, 38, 0.795);
+    border-radius:50px;
+    border: 2px rgb(28, 33, 38) solid;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    width:190px;
+}
+#new_post {
+    padding: 10px;
+    border-bottom: 1px black solid;
+    width: 99%;
+}
+textarea {
+    width: 100%
+}
+.post{
+    position:relative;
+    padding: 20px;
+    border-top: 1px solid black;
+}
+.post_view{
+    border-top: 1px solid rgb(28, 33, 38);
+}
+a .required_name {
+    color: black;
+    font-size:20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+#profile_name {
+    font-size:40px;
+    color: rgb(8,160,233);
+    font-family: Arial, Helvetica, sans-serif;
+}
+#prof_header {
+    padding: 10px;
+}
+
+
+
+
+#overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+#overlay_border {
+    border: 3px solid rgb(0,132,180);
+    border-radius: 20px;
+    position: absolute;
+    width:35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    background-color: white;
+    padding: 20px;
+}
+#overlay_border #overlay_text {
+    width: 100%; 
+}
+#overlay_border #overlay_button {
+    position: relative;
+}
+
+
+
+
+.search_the_user_link {
+    text-decoration: none! important;
+}
+.search_the_user_link .finding_user {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    border-top: 1px black solid;
+    padding: 10px;
+}
+
+
+
+
+#main_post_content {
+    font-size: 30px;
+}
+#main_buttons {
+    border-top: 1px solid rgb(28, 33, 38);
+    border-bottom: 1px solid rgb(28, 33, 38);
+    font-size:20px;
+}
+
+
+#login_form{
+    height: 100%;
+    margin-top: 10%;
+    text-align: center;
+}
+.form_field {
+    width: 280px;
+    height: 50px;
+    padding: 5px;
+    text-indent: 10px;
+}
+#login_header {
+    font-weight: bolder;
+}
+.login_button{
+    color:rgb(28, 33, 38);
+    background-color: white;
+    border-radius:25px;
+    border: 2px rgb(28, 33, 38) solid;
+    padding: 5px;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    width: 280px;
+}
+
+
+
+
+.custom_btn{
+    color:rgb(28, 33, 38);
+    background-color: white;
+    border-radius:25px;
+    border: 2px rgb(28, 33, 38) solid;
+    padding: 5px;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    justify-content: right;
+}
+.custom_btn:disabled {
+    color:rgba(255, 255, 255, 0.788);
+    background-color:rgba(28, 33, 38, 0.795);
+    border-radius:25px;
+    border: 2px rgba(28, 33, 38, 0.651) solid;
+    padding: 5px;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    justify-content: right;
+    box-shadow: none;
+}
+.edit_btn{
+    color:rgb(28, 33, 38);
+    background-color: white;
+    border-radius:20px;
+    border: 2px rgb(28, 33, 38) solid;
+    padding: 10px;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    position:absolute;
+    top: 20px;
+    right: 20px;
+}
+#close_button {
+    color:rgb(28, 33, 38);
+    font-size: 25px;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background-color: white;
+    border:none;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+
+
+
+.like_icon {
+    width:55px;
+    height:55px;
+    border-radius: 50%;
+    padding:5px;
+}
+.comment_icon {
+    width:30px; 
+    height:30px;
+    border-radius: 50%;
+    margin-left:10px;
+}
+#main_icon {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    padding: 12px;
+}

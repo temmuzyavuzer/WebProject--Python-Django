@@ -1,0 +1,16 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<h1>Search Username</h1>
+<div id='search_the_user'>
+    {% for user in potential %}
+    <a href="{% url 'user_profile' user.username %}" class='search_the_user_link'>
+        <div class='searched_user'>
+            <b class='required_name'>{{ user.first_name }} {{ user.last_name }}</b>
+            <br>
+            @{{ user.username }}
+        </div>
+    </a>
+    {% empty%}  User not found, please try again {% endfor %}
+</div>
+{% endblock %}
